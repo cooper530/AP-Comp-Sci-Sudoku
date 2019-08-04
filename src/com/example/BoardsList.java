@@ -8,7 +8,7 @@ public class BoardsList {
     private int randomInt;
 
     /*
-    DEFAULT BOARD CONFIGURATION IF WANTED TO ADD MORE BOARDS. JUST REPLACE MODBOARD WITH ANYTHING
+    DEFAULT BOARD CONFIGURATION IF WANTED TO ADD MORE BOARDS
     int[][] modBoard1 = {
                 {},
                 {},
