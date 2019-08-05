@@ -105,7 +105,7 @@ public class Verifier {
         int intCol = Character.getNumericValue(col);
         intCol -= 10;
         //The +2 accounts for the columns are longer than the rows
-        for(int i = 0; i < checkBoard[intRow].length +2;i++)
+        for(int i = 0; i < checkBoard[intRow].length;i++)
         {
             //System.out.println("Column: " + checkBoard[i][intCol]);
             if(num == checkBoard[i][intCol])

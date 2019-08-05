@@ -11,12 +11,12 @@ NOTES FOR FUTURE IMPROVEMENTS:
 - COMPLETE Determine the best possible print layout for the sudoku board for the player
 - COMPLETE Create a possible value signature, "" or ()
 - COMPLETE Random class system to handle multiple boards (BoardsList class)
+- COMPLETE Simplify board and verifier classes
 - Possible restart command to reset entire program?
 
 TROUBLESHOOT:
-
 -In some instances, the space requested is falsely returned as being filled. Possibly because working with a new board?
- */
+*/
 
 public class Main {
 
@@ -108,6 +108,5 @@ public class Main {
         }
         long timeElapsed = finish - start;
         System.out.println("Game over! Your time was " + timeElapsed + " milliseconds.");
-
     }
 }

@@ -6,13 +6,7 @@ import java.util.*;
 
 public class Board {
     //All variables pertaining to the Board class
-    private static final int rows = 11;
-    private static final int cols = 11;
-    private int colPosition = 0;
-    private static final String pattern = "ABCXDEFXGHI";
-
-    //int[][] board;
-    ArrayList<int[][]> boardsList = new ArrayList<int[][]>();
+    private static final String pattern = "ABCDEFGHI";
     private int[][] originalBoard;
     private int[][] modBoard;
     private boolean[][] proposedBoard = new boolean[11][9];
@@ -35,25 +29,6 @@ public class Board {
         this.modBoard = getBoard.getNewModBoard();
 
     }
-        /*
-        Used to create a default board. May be useful later for sudoku board algorithm
-        board = new int[rows][cols];
-
-        for(int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                //This if condition checks wheter a blank space should be entered
-                if ((j + 1) % 4 == 0 || (i + 1) % 4 == 0) {
-                    this.board[i][j] = 0;
-                    //This variable is used to keep the numbers from going over 9
-                    colPosition ++;
-                }
-                else {
-                    this.board[i][j] = j + 1 - colPosition;
-                }
-            }
-            colPosition = 0;
-        }
-        */
 
     /*
     This method prints out the board using two for loops, one for the row and the other for the column. To create the
@@ -62,94 +37,51 @@ public class Board {
     public String toString()
     {
         //Prints out first two rows of the sudoku board
-
-        //int[][] board = boardsList.get(1);
-        System.out.println("    A  B  C   D  E  F   G  H  I");
-        System.out.println("    -  -  -   -  -  -   -  -  -");
+        System.out.println("  | A  B  C | D  E  F | G  H  I");
+        System.out.println("- + -  -  - + -  -  - + -  -  -");
 
         //Prints out the letter/symbol for each row
         for(int i = 0; i < modBoard.length; i++) {
+
             //Prints out each letter per row
-            if(pattern.charAt(i) == 'X')
+            if(i == 3 || i == 6)
             {
-                System.out.print(" ");
-            }
-            else
-            {
-                System.out.print(pattern.charAt(i) + " |");
-            }
-            //Checks if an empty row is required 3 7
-            if(i == 3 || i == 7)
-            {
-                System.out.println("   -  -  -   -  -  -   -  -  -");
-                continue;
+                System.out.println("- + -  -  - + -  -  - + -  -  -");
             }
 
+            System.out.print(pattern.charAt(i) + " |");
 
             //Begins each column (individual number)
             for (int j = 0; j < modBoard[0].length; j++) {
                 //Checks if a mystery space is needed
                 if(modBoard[i][j] == -1)
                 {
-                    //Checks if a space is required
-                    if(j == 2 || j== 5)
-                    {
-                        System.out.print(" X |");
-                    }
-                    //Normal X
-                    else
-                    {
-                        System.out.print(" X ");
-                    }
-
+                    System.out.print(" X ");
                 }
-                else if(j == 2 || j == 5)
+                //Checks if quotations are need when creating board
+                else if(proposedBoard[i][j])
                 {
-                    if(proposedBoard[i][j])
-                    {
-                        System.out.print("'" + modBoard[i][j] + "' |");
-                    }
-                    else
-                    {
-                        System.out.print(" "  + modBoard[i][j] + " |");
-                    }
+                    System.out.print("'" + modBoard[i][j] + "'");
                 }
-                else {
-                    if(proposedBoard[i][j])
-                    {
-                        System.out.print("'" + modBoard[i][j] + "'");
-                    }
-                    else
-                    {
-                        System.out.print(" " + modBoard[i][j] + " ");
-                    }
-
+                else
+                {
+                    System.out.print(" " + modBoard[i][j] + " ");
+                }
+                //Checks if space is required
+                if(j == 2 || j == 5)
+                {
+                    System.out.print("|");
                 }
             }
-            //System.out.print("\n");
             System.out.print("\n");
         }
-
-
         return "";
     }
 
     /*
-    This method will get the 2D list of the board, primarily used
-     in the Verifier class.
-
-    public int[][] getChangedBoard()
-    {
-        return boardsList.get(1);
-    }*/
-
-    /*
     This method will get the ORIGINAL 2D list of the board, primarily used in the Verifier class.
      */
-    public int[][] getOriginalBoard()
-    {
-        return originalBoard;
-    }
+    public int[][] getOriginalBoard() { return originalBoard; }
     /*
     This method will get the MODIFIED 2D list of the board.
      */
@@ -171,6 +103,4 @@ public class Board {
         //Changes number
         modBoard[intRow][intCol] = num;
     }
-
-
 }
