@@ -9,7 +9,7 @@ public class Board {
     private static final String pattern = "ABCDEFGHI";
     private int[][] originalBoard;
     private int[][] modBoard;
-    private boolean[][] proposedBoard = new boolean[11][9];
+    private boolean[][] proposedBoard = new boolean[9][9];
 
     /*
     This initializes the board, setting it up so that there is 1-9 in the table. Currently the sudoku algorithm is
@@ -37,8 +37,8 @@ public class Board {
     public String toString()
     {
         //Prints out first two rows of the sudoku board
-        System.out.println("  | A  B  C | D  E  F | G  H  I");
-        System.out.println("- + -  -  - + -  -  - + -  -  -");
+        System.out.println("  | A  B  C | D  E  F | G  H  I |");
+        System.out.println("- + -  -  - + -  -  - + -  -  - +");
 
         //Prints out the letter/symbol for each row
         for(int i = 0; i < modBoard.length; i++) {
@@ -46,7 +46,7 @@ public class Board {
             //Prints out each letter per row
             if(i == 3 || i == 6)
             {
-                System.out.println("- + -  -  - + -  -  - + -  -  -");
+                System.out.println("- + -  -  - + -  -  - + -  -  - +");
             }
 
             System.out.print(pattern.charAt(i) + " |");
@@ -56,7 +56,7 @@ public class Board {
                 //Checks if a mystery space is needed
                 if(modBoard[i][j] == -1)
                 {
-                    System.out.print(" X ");
+                    System.out.print("   ");
                 }
                 //Checks if quotations are need when creating board
                 else if(proposedBoard[i][j])
@@ -73,9 +73,9 @@ public class Board {
                     System.out.print("|");
                 }
             }
-            System.out.print("\n");
+            System.out.print("|" + "\n");
         }
-        return "";
+        return "- + -  -  - + -  -  - + -  -  - +" + "\n";
     }
 
     /*
@@ -88,7 +88,7 @@ public class Board {
     public int[][] getModBoard(){return modBoard;}
 
     /*
-    This method will be used to change the specific number in the 2D Board Array
+    This method will be used to change the specific number in the 2D Board Array (finalized value by default).
     */
     public void replacePos(char row, char col, int num, char proposed)
     {
@@ -99,6 +99,11 @@ public class Board {
         if(proposed == 'n')
         {
             proposedBoard[intRow][intCol] = true;
+        }
+        //Reverts back to finalized value
+        else
+        {
+            proposedBoard[intRow][intCol] = false;
         }
         //Changes number
         modBoard[intRow][intCol] = num;
