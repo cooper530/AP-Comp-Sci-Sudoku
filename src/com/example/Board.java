@@ -86,6 +86,10 @@ public class Board {
     This method will get the MODIFIED 2D list of the board.
      */
     public int[][] getModBoard(){return modBoard;}
+    /*
+    This method will get the PROPOSED 2D list of the board.
+     */
+    public boolean[][] getPropBoard(){return proposedBoard;}
 
     /*
     This method will be used to change the specific number in the 2D Board Array (finalized value by default).

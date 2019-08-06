@@ -79,11 +79,19 @@ public class Verifier {
     DO NOT EDIT THIS CODE
      */
     public static boolean confirmReplacement(Board board, int num, char row, char col){
-        //Check the row of the board
         int intRow = Character.getNumericValue(row);
         intRow -= 10;
+        int intCol = Character.getNumericValue(col);
+        intCol -= 10;
         //The board that will be used to verify the values
         int[][] checkBoard = board.getModBoard();
+
+        //Condition for proposed board as it will not recognize the difference
+        if(board.getPropBoard()[intRow][intCol] && checkBoard[intRow][intCol] == num)
+        {
+            return true;
+        }
+        //Check the row of the board
         for(int i = 0; i < checkBoard[intRow].length;i++)
         {
             System.out.println("Row: " + checkBoard[intRow][i]);
@@ -94,9 +102,7 @@ public class Verifier {
         }
 
         //Check the column of the board
-        int intCol = Character.getNumericValue(col);
-        intCol -= 10;
-        //The +2 accounts for the columns are longer than the rows
+
         for(int i = 0; i < checkBoard[intRow].length;i++)
         {
             System.out.println("Column: " + checkBoard[i][intCol]);

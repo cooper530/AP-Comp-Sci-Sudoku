@@ -130,6 +130,7 @@ public class BoardsList {
         this.originalList.add(originalBoard3);
         this.originalList.add(originalBoard4);
         System.out.println("Currently " + 4 + " different boards are available.");
+        System.out.println("To win the game, all values must be correct and finalized.");
     }
 
     /*

@@ -12,10 +12,14 @@ NOTES FOR FUTURE IMPROVEMENTS:
 - COMPLETE Create a possible value signature, "" or ()
 - COMPLETE Random class system to handle multiple boards (BoardsList class)
 - COMPLETE Simplify board and verifier classes
+- COMPLETE Write instructions in the console
+- Create a readme
 - Possible restart command to reset entire program?
 
 TROUBLESHOOT:
--In some instances, the space requested is falsely returned as being filled. Possibly because working with a new board?
+- COMPLETE In some instances, the space requested is falsely returned as being filled. Possibly because working with a new board?
+    - Issue: Certain statements were not properly written to begin with, and also there was no exception for the instance where a proposed
+        value was replaced by it's actual value.
 */
 
 public class Main {
