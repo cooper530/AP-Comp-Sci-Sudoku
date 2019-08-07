@@ -2,26 +2,6 @@ package com.example;
 
 import java.util.Scanner;
 
-/*
-NOTES FOR FUTURE IMPROVEMENTS:
-
-- COMPLETE (Issue was column was longer than row) Create a verifier method to determine whether the integer selected for that place is valid (check row, column, region)
-- COMPLETE Edit the method in Board class to replace the X value with the desired value
-- COMPLETE Create a timer for the player to see how long their game was
-- COMPLETE Determine the best possible print layout for the sudoku board for the player
-- COMPLETE Create a possible value signature, "" or ()
-- COMPLETE Random class system to handle multiple boards (BoardsList class)
-- COMPLETE Simplify board and verifier classes
-- COMPLETE Write instructions in the console
-- Create a readme
-- Possible restart command to reset entire program?
-
-TROUBLESHOOT:
-- COMPLETE In some instances, the space requested is falsely returned as being filled. Possibly because working with a new board?
-    - Issue: Certain statements were not properly written to begin with, and also there was no exception for the instance where a proposed
-        value was replaced by it's actual value.
-*/
-
 public class Main {
 
     public static void main(String[] args) {
@@ -36,15 +16,6 @@ public class Main {
             //Catches the interrupted exception in order to wait a specified period of time
             System.out.println("\n");
             System.out.println("Printing..." + "\n");
-
-            try
-            {
-                Thread.sleep(1000);
-            }
-            catch (InterruptedException e)
-            {
-                Thread.currentThread().interrupt(); // restore interrupted status
-            }
 
             System.out.println(sudoku);
 
@@ -105,12 +76,13 @@ public class Main {
             //Determines if the game is complete
             if(Verifier.completeFilled(sudoku))
             {
+                System.out.println("Board completely filled!");
                 win = true;
                 finish = System.currentTimeMillis();
             }
 
         }
         long timeElapsed = finish - start;
-        System.out.println("Game over! Your time was " + timeElapsed + " milliseconds.");
+        System.out.println("Game over! Your time was " + timeElapsed/1000 + " seconds.");
     }
 }

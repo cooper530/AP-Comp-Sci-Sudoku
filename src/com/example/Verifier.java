@@ -10,7 +10,7 @@ public class Verifier {
         int[][] verifyBoard = board.getModBoard();
         for(int i=0;i<verifyBoard.length;i++)
         {
-            for(int j=0;i<verifyBoard[0].length;i++)
+            for(int j=0;j<verifyBoard[0].length;j++)
             {
                 if(verifyBoard[i][j] == -1)
                 {
@@ -44,7 +44,7 @@ public class Verifier {
      */
     public static boolean confirmNum(int num){
 
-        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9){
+        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9 || num == 0){
             return true;
         }
         else
@@ -61,11 +61,11 @@ public class Verifier {
         int[][] verifyBoard = board.getOriginalBoard();
         int intRow = Character.getNumericValue(row);
         int intCol = Character.getNumericValue(col);
-        System.out.println("Before: Row " + intRow + " and Col " + intCol);
+        //System.out.println("Before: Row " + intRow + " and Col " + intCol);
         intRow -= 10;
         intCol -= 10;
-        System.out.println("After: Row " + intRow + " and Col " + intCol);
-        System.out.println(verifyBoard[intRow][intCol]);
+        //System.out.println("After: Row " + intRow + " and Col " + intCol);
+        //System.out.println(verifyBoard[intRow][intCol]);
 
         if(verifyBoard[intRow][intCol] != -1)
         {
@@ -94,7 +94,7 @@ public class Verifier {
         //Check the row of the board
         for(int i = 0; i < checkBoard[intRow].length;i++)
         {
-            System.out.println("Row: " + checkBoard[intRow][i]);
+            //System.out.println("Row: " + checkBoard[intRow][i]);
             if(num == checkBoard[intRow][i])
             {
                 return false;
@@ -105,7 +105,7 @@ public class Verifier {
 
         for(int i = 0; i < checkBoard[intRow].length;i++)
         {
-            System.out.println("Column: " + checkBoard[i][intCol]);
+            //System.out.println("Column: " + checkBoard[i][intCol]);
             if(num == checkBoard[i][intCol])
             {
                 return false;
@@ -187,14 +187,13 @@ public class Verifier {
         {
             for(int j=valueCol;j<valueCol + 3;j++)
             {
-                System.out.print(checkBoard[i][j] + " ");
+                //System.out.print(checkBoard[i][j] + " ");
                 if(checkBoard[i][j] == num)
                 {
-                    System.out.println("The region is the issue.");
                     return false;
                 }
             }
-            System.out.println(" ");
+            //System.out.println(" ");
         }
         return true;
     }
