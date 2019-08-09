@@ -10,7 +10,7 @@ public class Verifier {
         int[][] verifyBoard = board.getModBoard();
         for(int i=0;i<verifyBoard.length;i++)
         {
-            for(int j=0;i<verifyBoard[0].length;i++)
+            for(int j=0;j<verifyBoard[0].length;j++)
             {
                 if(verifyBoard[i][j] == -1)
                 {
@@ -19,36 +19,6 @@ public class Verifier {
             }
         }
         return true;
-    }
-
-    /*
-    This method determines if the board space specified is an original clue. It runs through the board, determining if there are any -1 values
-    in the 2D list.
-     */
-    public static boolean spaceFilled(Board board, char col, char row){
-        int[][] verifyBoard = board.getOriginalBoard();
-        int intRow = Character.getNumericValue(row);
-        int intCol = Character.getNumericValue(col);
-        //System.out.println("Before: " + intRow + " and col " + intCol);
-        intRow -= 10;
-        intCol -= 10;
-        //System.out.println("After: " + intRow + " and col " + intCol);
-        //System.out.println(verifyBoard[intRow][intCol]);
-        //Special cases to determine position with 0 row
-        if(intRow >= 3){
-            if(intRow >= 6){
-                intRow += 2;
-            }
-            else{
-                intRow+= 1;
-            }
-        }
-
-        if(verifyBoard[intRow][intCol] != -1)
-        {
-            return true;
-        }
-        return false;
     }
 
     /*
@@ -74,7 +44,7 @@ public class Verifier {
      */
     public static boolean confirmNum(int num){
 
-        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9){
+        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9 || num == -1){
             return true;
         }
         else
@@ -82,16 +52,46 @@ public class Verifier {
             return false;
         }
     }
+
+    /*
+    This method determines if the board space specified is an original clue. It runs through the board, determining if there are any -1 values
+    in the 2D list.
+     */
+    public static boolean spaceFilled(Board board, char col, char row){
+        int[][] verifyBoard = board.getOriginalBoard();
+        int intRow = Character.getNumericValue(row);
+        int intCol = Character.getNumericValue(col);
+        //System.out.println("Before: Row " + intRow + " and Col " + intCol);
+        intRow -= 10;
+        intCol -= 10;
+        //System.out.println("After: Row " + intRow + " and Col " + intCol);
+        //System.out.println(verifyBoard[intRow][intCol]);
+
+        if(verifyBoard[intRow][intCol] != -1)
+        {
+            return true;
+        }
+        return false;
+    }
+
     /*
     This method determines whether there is a simalar number in the postitions same row, column, or region.
     DO NOT EDIT THIS CODE
      */
     public static boolean confirmReplacement(Board board, int num, char row, char col){
-        //Check the row of the board
         int intRow = Character.getNumericValue(row);
         intRow -= 10;
+        int intCol = Character.getNumericValue(col);
+        intCol -= 10;
         //The board that will be used to verify the values
         int[][] checkBoard = board.getModBoard();
+
+        //Condition for proposed board and blank slot as it will not recognize the difference
+        if(board.getPropBoard()[intRow][intCol] && checkBoard[intRow][intCol] == num || num == -1)
+        {
+            return true;
+        }
+        //Check the row of the board
         for(int i = 0; i < checkBoard[intRow].length;i++)
         {
             //System.out.println("Row: " + checkBoard[intRow][i]);
@@ -102,10 +102,8 @@ public class Verifier {
         }
 
         //Check the column of the board
-        int intCol = Character.getNumericValue(col);
-        intCol -= 10;
-        //The +2 accounts for the columns are longer than the rows
-        for(int i = 0; i < checkBoard[intRow].length +2;i++)
+
+        for(int i = 0; i < checkBoard[intRow].length;i++)
         {
             //System.out.println("Column: " + checkBoard[i][intCol]);
             if(num == checkBoard[i][intCol])
@@ -115,77 +113,87 @@ public class Verifier {
         }
 
         //Check the region of the board
-        int value;
+        int valueCol;
+        int valueRow;
+
+        //Row Region 1
         if(intRow <= 2)
         {
+            valueRow = 0;
+            //Col Region 1
             if(intCol <= 2)
             {
-                value = 0;
+                valueCol = 0;
 
 
             }
 
+            //Col Region 2
             else if(intCol <= 5)
             {
-                value = 3;
+                valueCol = 3;
             }
+            //Col Region 3
             else
             {
-                value = 6;
+                valueCol = 6;
             }
         }
+        //Row Region 2
         else if(intRow <= 5)
         {
+            valueRow = 3;
             if(intCol <= 2)
             {
-                value = 0;
+                valueCol = 0;
 
 
             }
 
             else if(intCol <= 5)
             {
-                value = 3;
+                valueCol = 3;
             }
             else
             {
-                value = 6;
+                valueCol = 6;
             }
         }
+        //Row Region 3
         else
         {
+            valueRow = 6;
             if(intCol <= 2)
             {
-                value = 0;
+                valueCol = 0;
 
 
             }
 
             else if(intCol <= 5)
             {
-                value = 3;
+                valueCol = 3;
             }
             else
             {
-                value = 6;
+                valueCol = 6;
             }
         }
-        return confirmRegion(value, num, checkBoard);
 
-    }
-    /*
-    This method verifies the region is valid or not
-     */
-    private static boolean confirmRegion(int value, int num, int[][] checkBoard){
-        for(int i=0;i<value + 3;i++)
+        /*
+        This runs through the region specified above to determine if the user value is in the region.
+        */
+        for(int i=valueRow;i<valueRow + 3;i++)
         {
-            for(int j=0;j<value + 3;j++)
+            for(int j=valueCol;j<valueCol + 3;j++)
             {
+                //System.out.print(checkBoard[i][j] + " ");
                 if(checkBoard[i][j] == num)
                 {
                     return false;
                 }
             }
+            //System.out.println(" ");
         }
         return true;
     }

@@ -1,0 +1,38 @@
+NOTES FOR FUTURE IMPROVEMENTS:
+
+- COMPLETE (Issue was column was longer than row) Create a verifier method to determine whether the integer selected for that place is valid (check row, column, region)
+- COMPLETE Edit the method in Board class to replace the X value with the desired value
+- COMPLETE Create a timer for the player to see how long their game was
+- COMPLETE Determine the best possible print layout for the sudoku board for the player
+- COMPLETE Create a possible value signature, "" or ()
+- COMPLETE Random class system to handle multiple boards (BoardsList class)
+- COMPLETE Simplify board and verifier classes
+- COMPLETE Write instructions in the console
+- COMPLETE Create a readme
+- COMPLETE Fix completelyFilled method to not stop when one section of the board is completely filled.
+- COMPLETE Ability to replace a number with an empty slot.
+- Possible restart command to reset entire program?
+
+
+TROUBLESHOOT:
+- COMPLETE In some instances, the space requested is falsely returned as being filled. Possibly because working with a new board?
+    - Issue: Certain statements were not properly written to begin with, and also there was no exception for the instance where a proposed
+        value was replaced by it's actual value.
+
+- Used to create a default board. May be useful later for sudoku board algorithm
+  board = new int[rows][cols];
+
+    for(int i = 0; i < board.length; i++) {
+        for (int j = 0; j < board[0].length; j++) {
+            //This if condition checks wheter a blank space should be entered
+            if ((j + 1) % 4 == 0 || (i + 1) % 4 == 0) {
+                this.board[i][j] = 0;
+                //This variable is used to keep the numbers from going over 9
+                colPosition ++;
+            }
+            else {
+                this.board[i][j] = j + 1 - colPosition;
+            }
+        }
+        colPosition = 0;
+    }
