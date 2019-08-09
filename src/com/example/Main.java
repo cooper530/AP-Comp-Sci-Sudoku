@@ -53,6 +53,11 @@ public class Main {
             //The confirmation if the number is valid in the location
             if(Verifier.confirmReplacement(sudoku, num, row, col))
             {
+                if(num == -1)
+                {
+                    sudoku.replacePos(row, col, num);
+                    continue;
+                }
                 //Ask if value is final
                 System.out.print("Is this value final? (Y/N): ");
                 char finalValue = input.next().charAt(0);

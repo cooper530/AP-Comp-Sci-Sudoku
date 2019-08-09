@@ -2,8 +2,6 @@ package com.example;
 
 import java.util.*;
 
-//LIST[ROW][COL]
-
 public class Board {
     //All variables pertaining to the Board class
     private static final String pattern = "ABCDEFGHI";
@@ -15,19 +13,20 @@ public class Board {
     This initializes the board, setting it up so that there is 1-9 in the table. Currently the sudoku algorithm is
     not factored into the creation of the board, but it will at a later date.
 
+    LIST[ROW][COL]
+
     DEFAULT BOARD CONFIGURATION:
     2D 11x11 List
     -1 = X Spot (Unknown)
     0 = Blank Space
-
     */
+
     public Board() {
         //Creates the initial board with rows and cols as variables. Gets a random board from the BoardsList class
         BoardsList getBoard = new BoardsList();
 
         this.originalBoard = getBoard.getNewOriginalBoard();
         this.modBoard = getBoard.getNewModBoard();
-
     }
 
     /*
@@ -109,6 +108,19 @@ public class Board {
         {
             proposedBoard[intRow][intCol] = false;
         }
+        //Changes number
+        modBoard[intRow][intCol] = num;
+    }
+
+    /*
+    This method is for replacing a blank space, which does not require a proposed value.
+     */
+    public void replacePos(char row, char col, int num)
+    {
+        int intRow = Character.getNumericValue(row);
+        intRow -= 10;
+        int intCol = Character.getNumericValue(col);
+        intCol -= 10;
         //Changes number
         modBoard[intRow][intCol] = num;
     }

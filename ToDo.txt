@@ -10,8 +10,9 @@ NOTES FOR FUTURE IMPROVEMENTS:
 - COMPLETE Write instructions in the console
 - COMPLETE Create a readme
 - COMPLETE Fix completelyFilled method to not stop when one section of the board is completely filled.
+- COMPLETE Ability to replace a number with an empty slot.
 - Possible restart command to reset entire program?
-- Ability to replace a number with an empty slot.
+
 
 TROUBLESHOOT:
 - COMPLETE In some instances, the space requested is falsely returned as being filled. Possibly because working with a new board?

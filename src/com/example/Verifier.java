@@ -44,7 +44,7 @@ public class Verifier {
      */
     public static boolean confirmNum(int num){
 
-        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9 || num == 0){
+        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9 || num == -1){
             return true;
         }
         else
@@ -86,8 +86,8 @@ public class Verifier {
         //The board that will be used to verify the values
         int[][] checkBoard = board.getModBoard();
 
-        //Condition for proposed board as it will not recognize the difference
-        if(board.getPropBoard()[intRow][intCol] && checkBoard[intRow][intCol] == num)
+        //Condition for proposed board and blank slot as it will not recognize the difference
+        if(board.getPropBoard()[intRow][intCol] && checkBoard[intRow][intCol] == num || num == -1)
         {
             return true;
         }
