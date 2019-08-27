@@ -131,7 +131,7 @@ public class BoardsList {
         this.originalList.add(originalBoard4);
         System.out.println("Currently " + 4 + " different boards are available.");
         System.out.println("To win the game, all values must be correct and finalized.");
-        //System.out.println("Enter a number to replace at the col/row, or type 0 to clear the slot.");
+        System.out.println("Enter a number to replace at the col/row, or type -1 to clear the slot.");
     }
 
     /*

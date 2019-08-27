@@ -12,6 +12,7 @@ NOTES FOR FUTURE IMPROVEMENTS:
 - COMPLETE Fix completelyFilled method to not stop when one section of the board is completely filled.
 - COMPLETE Ability to replace a number with an empty slot.
 - Possible restart command to reset entire program?
+- COMPLETE Fix issue with program not accepting non-final values where it should have.
 
 
 TROUBLESHOOT:
