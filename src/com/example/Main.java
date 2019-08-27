@@ -9,10 +9,12 @@ public class Main {
         Scanner input = new Scanner(System.in);
         boolean win = false;
 	    Board sudoku = new Board();
+	    int moves = 0;
         long start = System.currentTimeMillis();
         long finish = 0;
 
         while (!win){
+            moves += 1;
             //Catches the interrupted exception in order to wait a specified period of time
             System.out.println("\n");
             System.out.println("Printing..." + "\n");
@@ -49,34 +51,37 @@ public class Main {
                 continue;
             }
 
-            //System.out.println(Verifier.confirmReplacement(sudoku, num, row, col));
-            //The confirmation if the number is valid in the location
-            if(Verifier.confirmReplacement(sudoku, num, row, col))
+            //Checks if the value is final
+            System.out.print("Is this value final? (Y/N): ");
+            char finalValue = input.next().charAt(0);
+            finalValue = Character.toLowerCase(finalValue);
+            if(finalValue == 'y' || finalValue == 'n')
             {
-                if(num == -1)
+                //The confirmation if the number is valid in the location
+                if(finalValue == 'n')
                 {
-                    sudoku.replacePos(row, col, num);
-                    continue;
-                }
-                //Ask if value is final
-                System.out.print("Is this value final? (Y/N): ");
-                char finalValue = input.next().charAt(0);
-                finalValue = Character.toLowerCase(finalValue);
-                if(finalValue == 'y' || finalValue == 'n')
-                {
-                    //The physical replacement of the number in that slot
                     sudoku.replacePos(row, col, num, finalValue);
                 }
-                else{
-                    System.out.println("Please enter a 'y' or 'n'.");
+                else if(Verifier.confirmReplacement(sudoku, num, row, col))
+                {
+                    if(num == -1)
+                    {
+                        sudoku.replacePos(row, col, num);
+                        continue;
+                    }
+                    sudoku.replacePos(row, col, num, finalValue);
+                }
+                else
+                {
+                    System.out.println("That number will not fit!");
                     continue;
                 }
             }
-            else
-            {
-                System.out.println("That number will not fit!");
+            else{
+                System.out.println("Please enter a 'y' or 'n'.");
                 continue;
             }
+
 
             //Determines if the game is complete
             if(Verifier.completeFilled(sudoku))
@@ -88,6 +93,6 @@ public class Main {
 
         }
         long timeElapsed = finish - start;
-        System.out.println("Game over! Your time was " + timeElapsed/1000 + " seconds.");
+        System.out.println("Game over! Your time was " + timeElapsed/1000 + " seconds in " + moves + " moves.");
     }
 }
