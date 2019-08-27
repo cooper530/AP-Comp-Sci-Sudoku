@@ -9,10 +9,12 @@ public class Main {
         Scanner input = new Scanner(System.in);
         boolean win = false;
 	    Board sudoku = new Board();
+	    int moves = 0;
         long start = System.currentTimeMillis();
         long finish = 0;
 
         while (!win){
+            moves += 1;
             //Catches the interrupted exception in order to wait a specified period of time
             System.out.println("\n");
             System.out.println("Printing..." + "\n");
@@ -91,6 +93,6 @@ public class Main {
 
         }
         long timeElapsed = finish - start;
-        System.out.println("Game over! Your time was " + timeElapsed/1000 + " seconds.");
+        System.out.println("Game over! Your time was " + timeElapsed/1000 + " seconds in " + moves + " moves.");
     }
 }
