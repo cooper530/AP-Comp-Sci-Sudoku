@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SudokuAPCompSci:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SudokuAPCompSci_jar</output-path>
+    <root id="archive" name="SudokuAPCompSci.jar">
+      <element id="module-output" name="SudokuAPCompSci" />
+    </root>
+  </artifact>
+</component>
