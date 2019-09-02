@@ -1,19 +1,21 @@
 package com.example;
-
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         //Initializes certain aspects of the program. Ex: Input, win booleans, the board, and clock
-        Scanner input = new Scanner(System.in);
         boolean win = false;
-	    Board sudoku = new Board();
 	    int moves = 0;
         long start = System.currentTimeMillis();
         long finish = 0;
+        Board sudoku = new Board();
+
+        System.out.println("To win the game, all values must be correct and finalized.");
+        System.out.println("Enter a number to replace at the col/row, or type -1 to clear the slot.");
 
         while (!win){
+            Scanner input = new Scanner(System.in);
+
             moves += 1;
             //Catches the interrupted exception in order to wait a specified period of time
             System.out.println("\n");
@@ -40,12 +42,18 @@ public class Main {
                 System.out.println("That location is filled originally!");
                 continue;
             }
+            int num;
+            try {
+                System.out.print("Enter number: ");
+                num = input.nextInt();
 
-            System.out.print("Enter number: ");
-            int num = input.nextInt();
-
-            //Confirms if the user input is a valid number
-            if(!Verifier.confirmNum(num))
+                //Confirms if the user input is a valid number
+                if (!Verifier.confirmNum(num)) {
+                    System.out.println("Value entered is neither a valid number (1-9)!");
+                    continue;
+                }
+            }
+            catch(java.util.InputMismatchException e)
             {
                 System.out.println("Value entered is neither a valid number (1-9)!");
                 continue;
