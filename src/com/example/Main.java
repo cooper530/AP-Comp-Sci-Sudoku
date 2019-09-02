@@ -1,16 +1,17 @@
 package com.example;
-
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         //Initializes certain aspects of the program. Ex: Input, win booleans, the board, and clock
         boolean win = false;
-	    Board sudoku = new Board();
 	    int moves = 0;
         long start = System.currentTimeMillis();
         long finish = 0;
+        Board sudoku = new Board();
+
+        System.out.println("To win the game, all values must be correct and finalized.");
+        System.out.println("Enter a number to replace at the col/row, or type -1 to clear the slot.");
 
         while (!win){
             Scanner input = new Scanner(System.in);

@@ -23,10 +23,18 @@ public class Board {
 
     public Board() {
         //Creates the initial board with rows and cols as variables. Gets a random board from the BoardsList class
+        //Begins the game by setting the mode
+        Mode mode = new Mode();
         BoardsList getBoard = new BoardsList();
 
-        this.originalBoard = getBoard.getNewOriginalBoard();
-        this.modBoard = getBoard.getNewModBoard();
+        if(mode.getMode() == 1) {
+            this.originalBoard = getBoard.getRandomOriginalBoard();
+            this.modBoard = getBoard.getRandomModBoard();
+        }
+        else if(mode.getMode() == 2) {
+            this.originalBoard = getBoard.getOriginalBoard();
+            this.modBoard = getBoard.getModBoard();
+        }
     }
 
     /*

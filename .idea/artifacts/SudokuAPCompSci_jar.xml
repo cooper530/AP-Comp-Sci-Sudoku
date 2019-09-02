@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/SudokuAPCompSci_jar</output-path>
     <root id="archive" name="SudokuAPCompSci.jar">
       <element id="module-output" name="SudokuAPCompSci" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/sudoku-3.0.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
