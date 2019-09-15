@@ -21,7 +21,7 @@ public class Mode {
             try {
                 mode = input.nextInt();
                 //Catches if the user does not enter a 1 or 2
-                if (mode > 2 || mode < 1) {
+                if (mode > 2 || mode < 0) {
                     System.out.println("Please enter a 1 or 2");
                     continue;
                 }

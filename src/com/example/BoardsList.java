@@ -6,7 +6,10 @@ import java.util.*;
 
 public class BoardsList {
     private ArrayList<int[][]> boardsList = new ArrayList<>();
-
+    /*
+    Used from Sudoku Board Randomizer Library. These lines initialize the randomized board, then create two separate
+    arrays to be applied to the program.
+    */
     private GameMatrix matrix = Creator.createFull();
     private Riddle riddle = Creator.createRiddle(matrix);
     private byte[][] byteArray = riddle.getArray();
@@ -35,7 +38,7 @@ public class BoardsList {
             }
         }
 
-        //List of original boards
+        //List of original boards used in "Normal Mode"
         int[][] originalBoard1 = {
                 {-1, -1, 7, -1, -1, -1, -1, -1, -1},
                 {-1, 8, 4, -1, -1, 1, -1, -1, -1},

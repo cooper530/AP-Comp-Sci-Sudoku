@@ -8,6 +8,7 @@ public class Main {
 	    int moves = 0;
         long start = System.currentTimeMillis();
         long finish = 0;
+        //Initializes Board, game starts in Board class
         Board sudoku = new Board();
 
         System.out.println("To win the game, all values must be correct and finalized.");

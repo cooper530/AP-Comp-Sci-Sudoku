@@ -7,16 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38a54ebd-36e4-44e4-ae56-dbf33ae66a3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/example/Mode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SudokuAPCompSci_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/SudokuAPCompSci_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SudokuAPCompSci.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SudokuAPCompSci.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/BoardsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/BoardsList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/Mode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/Mode.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,11 +41,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/sudoku-3.0.0.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/AP-Comp-Sci-Sudoku-1.0" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

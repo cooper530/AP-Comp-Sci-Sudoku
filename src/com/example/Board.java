@@ -23,17 +23,25 @@ public class Board {
 
     public Board() {
         //Creates the initial board with rows and cols as variables. Gets a random board from the BoardsList class
-        //Begins the game by setting the mode
+
+        //Begins the game by setting the mode/getting list of boards
         Mode mode = new Mode();
         BoardsList getBoard = new BoardsList();
 
+        //Random Mode
         if(mode.getMode() == 1) {
             this.originalBoard = getBoard.getRandomOriginalBoard();
             this.modBoard = getBoard.getRandomModBoard();
         }
+        //Normal Mode
         else if(mode.getMode() == 2) {
             this.originalBoard = getBoard.getOriginalBoard();
             this.modBoard = getBoard.getModBoard();
+        }
+        else if(mode.getMode() == 0) {
+            System.out.println("Hello World!");
+            System.out.println("You've found my easter egg! -Cooper");
+            System.exit(0);
         }
     }
 
